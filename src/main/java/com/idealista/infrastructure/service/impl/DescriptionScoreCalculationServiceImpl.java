@@ -33,7 +33,7 @@ public class DescriptionScoreCalculationServiceImpl implements DescriptionScoreC
 
         } else if (typology.equals("FLAT")) {
 
-            if (numberOfWordsInDescription >= 20 && numberOfWordsInDescription < 49) {
+            if (numberOfWordsInDescription >= 20 && numberOfWordsInDescription <= 49) {
                 scoreOfTypologyDescription = 10;
             }
             if (numberOfWordsInDescription > 50) {
