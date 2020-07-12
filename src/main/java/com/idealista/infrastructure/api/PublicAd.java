@@ -1,15 +1,31 @@
 package com.idealista.infrastructure.api;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 public class PublicAd {
 
     private Integer id;
     private String typology;
     private String description;
+
+
+
     private List<String> pictureUrls;
     private Integer houseSize;
     private Integer gardenSize;
+    private Date irrelevantSince;
+
+    public PublicAd(Integer id, String typology, String description, List<String> urls, Integer houseSize, Integer gardenSize, Date irrelevantSince) {
+        this.id = id;
+        this.typology = typology;
+        this.description = description;
+        this.pictureUrls = urls;
+        this.houseSize = houseSize;
+        this.gardenSize = gardenSize;
+        this.irrelevantSince = irrelevantSince;
+    }
 
     public Integer getId() {
         return id;
@@ -57,5 +73,31 @@ public class PublicAd {
 
     public void setGardenSize(Integer gardenSize) {
         this.gardenSize = gardenSize;
+    }
+
+    public Date getIrrelevantSince() {
+        return irrelevantSince;
+    }
+
+    public void setIrrelevantSince(Date irrelevantSince) {
+        this.irrelevantSince = irrelevantSince;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PublicAd publicAd = (PublicAd) o;
+        return id.equals(publicAd.id) &&
+                typology.equals(publicAd.typology) &&
+                Objects.equals(description, publicAd.description) &&
+                Objects.equals(pictureUrls, publicAd.pictureUrls) &&
+                Objects.equals(houseSize, publicAd.houseSize) &&
+                Objects.equals(gardenSize, publicAd.gardenSize);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, typology, description, pictureUrls, houseSize, gardenSize);
     }
 }
